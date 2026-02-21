@@ -144,7 +144,7 @@ export const projects = [
         description:
             "Este site! Construído com Next.js e Tailwind CSS, com animações de digitação, scroll reveal e tema dark/light. Design minimalista e responsivo.",
         techs: ["Next.js", "TypeScript", "Tailwind CSS", "Lucide Icons"],
-        github: "https://github.com/rickluizms/portfolio-rickluizms",
+        github: "https://github.com/rickluizms/frontend-portfolio-rickluizms",
         live: "#",
     },
     {
