@@ -44,7 +44,7 @@ export function DailyActivityChart({ summaries }: DailyActivityChartProps) {
     if (dailyActivityData.length === 0) return null;
 
     return (
-        <Card className="border-border bg-card md:col-span-2">
+        <Card className="border-0 bg-transparent shadow-none md:col-span-2">
             <CardHeader>
                 <CardTitle>Atividade Diária</CardTitle>
                 <CardDescription>

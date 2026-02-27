@@ -1,7 +1,6 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Card, CardContent } from "@/components/ui/card";
 import { devInsightsService } from "@/services/dev.service";
 import type {
     DailySummary,
@@ -82,21 +81,19 @@ export function Stats() {
 
     if (error) {
         return (
-            <section className="mx-auto max-w-6xl px-6 mb-24" id="estatisticas">
-                <h2 className="mb-12 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            <section className="mx-auto max-w-7xl px-6 mb-24 min-h-screen flex flex-col justify-center" id="estatisticas">
+                <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl lg:text-4xl">
                     Estatísticas
                 </h2>
-                <Card className="border-destructive/30 bg-card">
-                    <CardContent className="flex flex-col items-center justify-center py-16 gap-4">
-                        <p className="text-muted-foreground">{error}</p>
-                        <button
-                            onClick={fetchData}
-                            className="rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-                        >
-                            Tentar novamente
-                        </button>
-                    </CardContent>
-                </Card>
+                <div className="mt-10 flex flex-col items-center justify-center py-16 gap-4">
+                    <p className="text-muted-foreground">{error}</p>
+                    <button
+                        onClick={fetchData}
+                        className="text-sm font-medium text-primary transition-colors hover:text-primary/80 cursor-pointer"
+                    >
+                        Tentar novamente
+                    </button>
+                </div>
             </section>
         );
     }
@@ -104,16 +101,16 @@ export function Stats() {
     return (
         <section
             ref={sectionRef}
-            className="mx-auto max-w-6xl px-6 mb-24 opacity-0 transition-all duration-700 ease-out translate-y-8 [&.scroll-revealed]:opacity-100 [&.scroll-revealed]:translate-y-0"
+            className="mx-auto max-w-7xl px-6 mb-16 pt-16 opacity-0 transition-all duration-700 ease-out translate-y-8 [&.scroll-revealed]:opacity-100 [&.scroll-revealed]:translate-y-0"
             id="estatisticas"
         >
-            <h2 className="mb-12 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl lg:text-4xl">
                 Estatísticas
             </h2>
 
             <Highlights overall={overall} />
 
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
                 <LanguageChart languages={languages} />
                 <LanguageBarChart languages={languages} />
                 <DailyActivityChart summaries={summaries} />

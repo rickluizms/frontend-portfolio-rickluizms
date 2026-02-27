@@ -75,7 +75,7 @@ export function About() {
     return (
         <section
             ref={sectionRef}
-            className="scroll-reveal mx-auto max-w-7xl px-6 mb-24"
+            className="scroll-reveal mx-auto max-w-7xl px-6 mb-24 min-h-screen flex flex-col justify-center"
             id="about"
         >
             <div className="flex flex-col items-start justify-start">

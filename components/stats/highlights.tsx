@@ -1,10 +1,3 @@
-import {
-    Card,
-    CardContent,
-    CardDescription,
-    CardHeader,
-    CardTitle,
-} from "@/components/ui/card";
 import { useMemo } from "react";
 import type { OverallStats } from "@/types/api";
 
@@ -42,24 +35,19 @@ export function Highlights({ overall }: HighlightsProps) {
     if (highlights.length === 0) return null;
 
     return (
-        <div className="mb-8 grid grid-cols-2 gap-4 sm:grid-cols-4">
+        <div className="my-10 grid grid-cols-2 gap-8 sm:grid-cols-4">
             {highlights.map((stat) => (
-                <Card
-                    key={stat.label}
-                    className="border-border bg-card transition-all duration-300 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5"
-                >
-                    <CardHeader className="pb-2">
-                        <CardDescription>{stat.label}</CardDescription>
-                        <CardTitle className="text-3xl font-bold text-primary truncate">
-                            {stat.value}
-                        </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                        <p className="text-xs text-muted-foreground">
-                            {stat.description}
-                        </p>
-                    </CardContent>
-                </Card>
+                <div key={stat.label} className="space-y-1">
+                    <p className="text-xs font-medium tracking-wide text-muted-foreground/60 uppercase">
+                        {stat.label}
+                    </p>
+                    <p className="text-3xl font-bold tracking-tight text-foreground">
+                        {stat.value}
+                    </p>
+                    <p className="text-xs text-muted-foreground">
+                        {stat.description}
+                    </p>
+                </div>
             ))}
         </div>
     );

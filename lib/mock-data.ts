@@ -12,9 +12,9 @@ import {
 export const HERO_SUFFIXES = [
     "o Luiz!",
     "engenheiro de dados.",
-    "especialista em IA.",
-    "desenvolvedor full stack.",
-    "criador de agentes inteligentes.",
+    "especialista em pipelines ETL/ELT.",
+    "arquiteto de dados em Azure & Databricks.",
+    "desenvolvedor de soluções com LLMs.",
 ]
 
 // ── About ──────────────────────────────────────────────
@@ -23,54 +23,54 @@ export const aboutSections = [
     {
         title: "Engenharia de Dados",
         overview:
-            "Construo pipelines robustos e escaláveis que transformam dados brutos em estruturas organizadas, prontas para gerar valor. Do Data Lake à camada analítica, cada etapa é pensada para performance e confiabilidade.",
+            "Atuo na construção de pipelines ETL/ELT, orquestração com Apache Airflow e processamento de dados com Python e SQL. Estruturo fluxos de ingestão, transformação e carga para ambientes analíticos, integrando sistemas legados como Firebird a bancos relacionais como PostgreSQL.",
         activities: [
-            "Pipelines ETL/ELT com Python e Apache Spark",
-            "Orquestração de workflows com Airflow",
-            "Modelagem e armazenamento em Data Lakes (HDFS)",
-            "Ingestão de dados em larga escala com qualidade",
+            "Pipelines ETL/ELT com Python e SQL",
+            "Orquestração de workflows com Apache Airflow",
+            "Integração de sistemas legados (Firebird → PostgreSQL)",
+            "Atualizações incrementais e ingestão em alta frequência",
         ],
         result:
-            "Dados estruturados que aceleram decisões e eliminam gargalos operacionais.",
+            "Ambientes de dados estruturados, confiáveis e preparados para analytics e automação.",
     },
     {
-        title: "Automação Inteligente",
+        title: "Modelagem & Data Warehouse",
         overview:
-            "Automatizo processos repetitivos e dreno de energia com soluções inteligentes. Agentes de IA, integrações com LLMs e fluxos autônomos que liberam tempo para o que realmente importa.",
+            "Trabalho com modelagem relacional e dimensional (Star Schema) para Data Warehouse e BI, estruturando bases analíticas voltadas para relatórios estratégicos e tomada de decisão.",
         activities: [
-            "Agentes de IA com LangChain e LLMs",
-            "Automação de processos com RAG e Prompt Engineering",
-            "Sistemas de cobrança automatizados via WhatsApp",
-            "Fluxos autônomos que aprendem e se adaptam",
+            "Modelagem relacional em PostgreSQL",
+            "Modelagem dimensional (Star Schema)",
+            "Estruturação de Data Warehouse",
+            "Criação de relatórios e KPIs no Power BI",
         ],
         result:
-            "Operações que rodam sozinhas, com inteligência e escala.",
+            "Dados organizados para análises estratégicas, relatórios gerenciais e suporte à decisão.",
     },
     {
-        title: "Integração de Sistemas",
+        title: "Automação & Integração de Sistemas",
         overview:
-            "Conecto sistemas isolados em ecossistemas coesos. APIs, microsserviços e integrações que fazem diferentes tecnologias conversarem de forma fluida e confiável.",
+            "Desenvolvo soluções backend e integrações via APIs REST, conectando sistemas internos, CRM e WhatsApp. Automatizo processos financeiros e operacionais, reduzindo esforço manual e aumentando eficiência.",
         activities: [
-            "Desenvolvimento de REST APIs com Node.js e Spring Boot",
-            "Integração com APIs externas e webhooks",
-            "Aplicações full stack com React, Next.js e TypeScript",
-            "Bancos de dados relacionais com PostgreSQL",
+            "Desenvolvimento backend com Python",
+            "Integração com APIs REST e CRM",
+            "Automações financeiras e régua de cobrança",
+            "Web scraping para integração de catálogos",
         ],
         result:
-            "Ecossistemas integrados que eliminam retrabalho e centralizam informações.",
+            "Processos automatizados, redução de retrabalho e maior eficiência operacional.",
     },
     {
-        title: "Arquitetura Orientada a Resultados",
+        title: "IA Aplicada a Dados",
         overview:
-            "Penso arquitetura, mas gosto ainda mais de ver a solução funcionando em produção. Busco o equilíbrio entre visão estratégica e execução sólida, entre planejamento e entrega.",
+            "Desenvolvo arquiteturas com LLMs e sistemas multiagente com RAG para recuperação de informações internas e execução de ações automatizadas, integrando dados estruturados a fluxos inteligentes.",
         activities: [
-            "Containerização com Docker e CI/CD",
-            "Monitoramento e observabilidade de sistemas",
-            "Arquiteturas escaláveis e resilientes",
-            "Foco em entrega contínua e impacto real",
+            "Arquiteturas multiagente com RAG",
+            "Integração com WhatsApp via N8N",
+            "Automação de emissão de boletos e certificados",
+            "Uso de MCP Tools em sistemas orientados a agentes",
         ],
         result:
-            "Sistemas que sustentam decisões melhores, processos mais rápidos e negócios preparados para crescer.",
+            "Soluções inteligentes que combinam dados estruturados com automação baseada em IA.",
     },
 ];
 
@@ -83,10 +83,22 @@ export const skills = [
         items: [
             "Python",
             "SQL",
+            "Apache Airflow",
             "Apache Spark",
-            "Airflow",
-            "ETL/ELT Pipelines",
-            "Data Lakes",
+            "Databricks",
+            "PostgreSQL",
+        ],
+    },
+    {
+        category: "Cloud & Data Platform",
+        icon: Cloud,
+        items: [
+            "Microsoft Azure",
+            "Azure App Services",
+            "Azure SQL Database",
+            "Amazon S3",
+            "Data Warehouse",
+            "Modelagem Dimensional",
         ],
     },
     {
@@ -94,35 +106,23 @@ export const skills = [
         icon: Brain,
         items: [
             "LLMs",
-            "Agentes de IA",
             "RAG",
-            "LangChain",
-            "Prompt Engineering",
-            "Automações Inteligentes",
+            "Arquitetura Multiagente",
+            "MCP Tools",
+            "N8N",
+            "Integração via WhatsApp",
         ],
     },
     {
-        category: "Desenvolvimento",
+        category: "Desenvolvimento & Integração",
         icon: Code2,
         items: [
-            "TypeScript",
-            "React / Next.js",
-            "Node.js",
-            "Java / Spring Boot",
-            "REST APIs",
-            "PostgreSQL",
-        ],
-    },
-    {
-        category: "DevOps & Cloud",
-        icon: Cloud,
-        items: [
-            "Docker",
-            "CI/CD",
-            "Linux",
-            "Git",
-            "HDFS",
-            "Monitoramento",
+            "Python (Backend)",
+            "React",
+            "APIs REST",
+            "Web Scraping",
+            "Firebird",
+            "Power BI",
         ],
     },
 ];
@@ -131,28 +131,36 @@ export const skills = [
 
 export const experiences = [
     {
-        role: "Engenheiro de Dados & IA",
-        company: "Projetos Independentes",
-        period: "2024 — Presente",
+        role: "Engenheiro de Dados",
+        company: "Nova Didata",
+        period: "Nov 2025 — Presente",
         description:
-            "Desenvolvimento de pipelines de dados, automações inteligentes com agentes de IA, integrações com APIs externas e criação de sistemas de cobrança automatizados com WhatsApp.",
-        techs: ["Python", "Spark", "Airflow", "LangChain", "Docker"],
+            "Desenvolvimento de pipeline de ingestão integrado ao Firebird com Python e Airflow, implementando atualizações incrementais a cada 15 minutos. Reestruturação de modelagem relacional em PostgreSQL, desenvolvimento de régua de cobrança automatizada (Python + React) e construção de sistema multiagente com LLMs e RAG integrado ao CRM via WhatsApp.",
+        techs: ["Python", "SQL", "Apache Airflow", "PostgreSQL", "React", "LLMs"],
     },
     {
-        role: "Desenvolvedor Full Stack",
-        company: "Projetos Diversos",
-        period: "2023 — 2024",
+        role: "Analista de Dados Jr",
+        company: "Moreira Car",
+        period: "Jan 2024 — Nov 2025",
         description:
-            "Construção de aplicações web completas com React, Next.js e Spring Boot. Criação de dashboards, sistemas de gestão e plataformas com autenticação e integração de dados.",
-        techs: ["TypeScript", "React", "Next.js", "Java", "Spring Boot", "PostgreSQL"],
+            "Desenvolvimento de sistema web integrado ao WhatsApp e SIGE, criação de agente de IA para registro automático de receitas e despesas utilizando N8N e MCP Tools, além de automação de integração de catálogos de fornecedores via web scraping em Python.",
+        techs: ["Python", "N8N", "MCP Tools", "Web Scraping", "WhatsApp API"],
     },
     {
-        role: "Automação & Dados",
-        company: "Início da Carreira",
-        period: "2022 — 2023",
+        role: "Analista de Dados Jr",
+        company: "Nova Didata",
+        period: "Dez 2022 — Dez 2023",
         description:
-            "Transformação de processos manuais em automações. Estruturação de dados brutos, criação de relatórios automatizados e início na construção de Data Lakes.",
-        techs: ["Python", "SQL", "Excel", "Power BI", "Web Scraping"],
+            "Desenvolvimento de automações em Python para geração de certificados e documentos, criação de pipeline de ingestão de dados, modelagem dimensional para BI, construção de relatórios no Power BI e deploy de aplicações na Microsoft Azure.",
+        techs: ["Python", "SQL", "Power BI", "Azure App Services", "Azure SQL Database"],
+    },
+    {
+        role: "Estagiário",
+        company: "Caixa Econômica Federal",
+        period: "Mai 2017 — Dez 2018",
+        description:
+            "Atuação em atendimento ao cliente, organização de documentos, digitalização de contratos e suporte às rotinas administrativas da agência.",
+        techs: ["Atendimento", "Rotinas Administrativas"],
     },
 ];
 

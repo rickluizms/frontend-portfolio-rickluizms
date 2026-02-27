@@ -55,7 +55,7 @@ export function LanguageChart({ languages }: LanguageChartProps) {
     if (languagePieData.length === 0) return null;
 
     return (
-        <Card className="border-border bg-card">
+        <Card className="border-0 bg-transparent shadow-none">
             <CardHeader>
                 <CardTitle>Linguagens</CardTitle>
                 <CardDescription>Distribuição por horas de uso</CardDescription>

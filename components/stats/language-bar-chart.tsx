@@ -22,8 +22,63 @@ const languageConfig = {
     },
 } satisfies ChartConfig;
 
+// Map language names (lowercase) to SVG paths
+const LANG_ICONS: Record<string, string> = {
+    python: "/python.svg",
+    typescript: "/typescript.svg",
+    java: "/java.svg",
+    docker: "/docker.svg",
+    postgresql: "/postgresql.svg",
+    kafka: "/kafka.svg",
+    nextjs: "/nextjs.svg",
+    "next.js": "/nextjs.svg",
+    tailwind: "/tailwind.svg",
+    n8n: "/n8n.svg",
+    openai: "/openai.svg",
+    javascript: "/javascript.svg",
+    html: "/html.svg",
+    yaml: "/yaml.svg",
+};
+
 interface LanguageBarChartProps {
     languages: LanguageStats[];
+}
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function CustomYTick({ x, y, payload }: any) {
+    const name: string = payload?.value ?? "";
+    const iconPath = LANG_ICONS[name.toLowerCase()];
+
+    return (
+        <g transform={`translate(${x},${y})`}>
+            {iconPath ? (
+                <image
+                    href={iconPath}
+                    x={-120}
+                    y={-8}
+                    width={16}
+                    height={16}
+                />
+            ) : (
+                /* Fallback: code brackets icon </>  */
+                <g transform="translate(-120,-8)" opacity={0.4}>
+                    <rect width={16} height={16} rx={3} fill="currentColor" fillOpacity={0.08} />
+                    <text x={8} y={12} textAnchor="middle" fontSize={9} fill="currentColor" fontFamily="monospace">{"</>"}</text>
+                </g>
+            )}
+            <text
+                x={-98}
+                y={0}
+                dy={4}
+                textAnchor="start"
+                fontSize={12}
+                fill="currentColor"
+                className="fill-foreground"
+            >
+                {name}
+            </text>
+        </g>
+    );
 }
 
 export function LanguageBarChart({ languages }: LanguageBarChartProps) {
@@ -40,7 +95,7 @@ export function LanguageBarChart({ languages }: LanguageBarChartProps) {
     if (languageBarData.length === 0) return null;
 
     return (
-        <Card className="border-border bg-card">
+        <Card className="border-0 bg-transparent shadow-none">
             <CardHeader>
                 <CardTitle>Top Linguagens (Horas)</CardTitle>
                 <CardDescription>
@@ -64,8 +119,8 @@ export function LanguageBarChart({ languages }: LanguageBarChartProps) {
                             type="category"
                             tickLine={false}
                             axisLine={false}
-                            width={120}
-                            tick={{ fontSize: 12 }}
+                            width={130}
+                            tick={<CustomYTick />}
                         />
                         <XAxis
                             type="number"
@@ -85,3 +140,4 @@ export function LanguageBarChart({ languages }: LanguageBarChartProps) {
         </Card>
     );
 }
+

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { Github, Linkedin, Mail } from "lucide-react";
+import { Github, Linkedin, Mail, ArrowUpRight } from "lucide-react";
 import { contactLinks } from "@/lib/mock-data";
 
 const iconMap: Record<string, typeof Github> = {
@@ -34,35 +34,44 @@ export function Contact() {
     return (
         <section
             ref={sectionRef}
-            className="scroll-reveal mx-auto max-w-6xl px-6 mb-24"
+            className="scroll-reveal mx-auto max-w-7xl px-6 mb-24 min-h-screen flex flex-col justify-center"
             id="contato"
         >
-            <h2 className="mb-4 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-                Contato
-            </h2>
-            <p className="mb-10 max-w-2xl text-base text-muted-foreground sm:text-lg">
-                Quer conversar sobre um projeto, uma oportunidade ou trocar uma
-                ideia sobre tecnologia? Me chama.
-            </p>
+            <div className="grid grid-cols-1 items-start gap-12 md:grid-cols-[1fr_1fr]">
+                {/* Left: headline */}
+                <div>
+                    <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl lg:text-4xl">
+                        Vamos conversar?
+                    </h2>
+                    <p className="mt-4 max-w-md text-base leading-relaxed text-muted-foreground">
+                        Quer falar sobre um projeto, uma oportunidade ou trocar
+                        uma ideia sobre tecnologia? Me chama.
+                    </p>
+                </div>
 
-            <div className="flex flex-wrap gap-4">
-                {contactLinks.map((link) => {
-                    const Icon = iconMap[link.label] || Mail;
-                    return (
-                        <a
-                            key={link.label}
-                            href={link.href}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="group flex items-center gap-3 rounded-2xl border border-border bg-card px-6 py-4 transition-all duration-300 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5"
-                        >
-                            <Icon className="h-5 w-5 text-muted-foreground transition-colors group-hover:text-primary" />
-                            <span className="text-sm font-medium text-foreground">
-                                {link.label}
-                            </span>
-                        </a>
-                    );
-                })}
+                {/* Right: contact links */}
+                <div className="space-y-6">
+                    {contactLinks.map((link) => {
+                        const Icon = iconMap[link.label] || Mail;
+                        return (
+                            <a
+                                key={link.label}
+                                href={link.href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="group flex items-center justify-between border-b border-border/40 pb-4 transition-colors hover:border-primary/30"
+                            >
+                                <div className="flex items-center gap-4">
+                                    <Icon className="h-5 w-5 text-muted-foreground/50 transition-colors group-hover:text-primary" />
+                                    <span className="text-base font-medium text-foreground">
+                                        {link.label}
+                                    </span>
+                                </div>
+                                <ArrowUpRight className="h-4 w-4 text-muted-foreground/30 transition-all group-hover:text-primary group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                            </a>
+                        );
+                    })}
+                </div>
             </div>
         </section>
     );
