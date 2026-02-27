@@ -19,11 +19,59 @@ export const HERO_SUFFIXES = [
 
 // ── About ──────────────────────────────────────────────
 
-export const aboutParagraphs = [
-    "Minha trajetória na tecnologia sempre foi guiada por inquietação. Eu nunca me contentei em apenas executar tarefas; eu queria entender como elas funcionavam, por que eram feitas daquela forma e, principalmente, como poderiam ser feitas melhor. Foi assim que comecei a transformar processos manuais em automações, dados brutos em estruturas organizadas e sistemas isolados em ecossistemas integrados.",
-    "Ao longo do tempo, fui me aproximando naturalmente da engenharia de dados e da inteligência artificial. Não por tendência, mas por necessidade real. Em projetos práticos, percebi que dados mal estruturados atrasam decisões, que tarefas repetitivas drenam energia e que empresas crescem quando seus fluxos se tornam inteligentes. Construir pipelines, integrar APIs, automatizar operações e criar agentes de IA deixaram de ser apenas habilidades técnicas e passaram a ser ferramentas estratégicas para gerar eficiência e escala.",
-    "Tenho um perfil analítico, mas também construtivo. Gosto de pensar arquitetura, mas gosto ainda mais de ver a solução funcionando em produção. Busco sempre o equilíbrio entre visão estratégica e execução sólida, entre planejamento e entrega. Para mim, tecnologia precisa sair do conceito e chegar ao impacto.",
-    "Hoje, meu foco está em transformar complexidade em clareza. Criar sistemas que trabalham em segundo plano, mas que sustentam decisões melhores, processos mais rápidos e negócios mais preparados para crescer.",
+export const aboutSections = [
+    {
+        title: "Engenharia de Dados",
+        overview:
+            "Construo pipelines robustos e escaláveis que transformam dados brutos em estruturas organizadas, prontas para gerar valor. Do Data Lake à camada analítica, cada etapa é pensada para performance e confiabilidade.",
+        activities: [
+            "Pipelines ETL/ELT com Python e Apache Spark",
+            "Orquestração de workflows com Airflow",
+            "Modelagem e armazenamento em Data Lakes (HDFS)",
+            "Ingestão de dados em larga escala com qualidade",
+        ],
+        result:
+            "Dados estruturados que aceleram decisões e eliminam gargalos operacionais.",
+    },
+    {
+        title: "Automação Inteligente",
+        overview:
+            "Automatizo processos repetitivos e dreno de energia com soluções inteligentes. Agentes de IA, integrações com LLMs e fluxos autônomos que liberam tempo para o que realmente importa.",
+        activities: [
+            "Agentes de IA com LangChain e LLMs",
+            "Automação de processos com RAG e Prompt Engineering",
+            "Sistemas de cobrança automatizados via WhatsApp",
+            "Fluxos autônomos que aprendem e se adaptam",
+        ],
+        result:
+            "Operações que rodam sozinhas, com inteligência e escala.",
+    },
+    {
+        title: "Integração de Sistemas",
+        overview:
+            "Conecto sistemas isolados em ecossistemas coesos. APIs, microsserviços e integrações que fazem diferentes tecnologias conversarem de forma fluida e confiável.",
+        activities: [
+            "Desenvolvimento de REST APIs com Node.js e Spring Boot",
+            "Integração com APIs externas e webhooks",
+            "Aplicações full stack com React, Next.js e TypeScript",
+            "Bancos de dados relacionais com PostgreSQL",
+        ],
+        result:
+            "Ecossistemas integrados que eliminam retrabalho e centralizam informações.",
+    },
+    {
+        title: "Arquitetura Orientada a Resultados",
+        overview:
+            "Penso arquitetura, mas gosto ainda mais de ver a solução funcionando em produção. Busco o equilíbrio entre visão estratégica e execução sólida, entre planejamento e entrega.",
+        activities: [
+            "Containerização com Docker e CI/CD",
+            "Monitoramento e observabilidade de sistemas",
+            "Arquiteturas escaláveis e resilientes",
+            "Foco em entrega contínua e impacto real",
+        ],
+        result:
+            "Sistemas que sustentam decisões melhores, processos mais rápidos e negócios preparados para crescer.",
+    },
 ];
 
 // ── Resumo / Skills ────────────────────────────────────
