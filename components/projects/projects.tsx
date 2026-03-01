@@ -63,19 +63,15 @@ export function Projects() {
             className="scroll-reveal mx-auto max-w-7xl px-6 mb-24 min-h-screen flex flex-col justify-center"
             id="projetos"
         >
-            <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl lg:text-4xl">
-                Projetos
-            </h2>
-
             <div className="mt-10">
                 <FlagshipProject />
             </div>
 
-            <h3 className="mt-4 mb-10 text-lg font-semibold tracking-tight text-muted-foreground">
+            <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl lg:text-4xl mb-10">
                 Outros Projetos
-            </h3>
+            </h2>
 
-            <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3 mt-10">
                 {paginatedProjects.map((project) => {
                     const techsWithIcons = project.techs.filter(
                         (t) => TECH_ICONS[t]
@@ -84,7 +80,7 @@ export function Projects() {
                     return (
                         <div
                             key={project.title}
-                            className="group flex flex-col space-y-4"
+                            className="group relative flex flex-col space-y-4 rounded-xl border border-border/10 bg-card/40 p-5 transition-all duration-300 hover:scale-[1.03] hover:border-primary/50 hover:arch-node-glow hover:bg-card/80"
                         >
                             {/* Title + links */}
                             <div className="flex items-start justify-between gap-2">
@@ -100,7 +96,7 @@ export function Projects() {
                                             className="p-1.5 text-muted-foreground/50 transition-colors hover:text-foreground"
                                             aria-label={`GitHub - ${project.title}`}
                                         >
-                                            <Github className="h-4 w-4" />
+                                            <Github className="h-4 w-4 transition-transform group-hover:scale-110" />
                                         </a>
                                     )}
                                     {project.live && (
@@ -111,7 +107,7 @@ export function Projects() {
                                             className="p-1.5 text-muted-foreground/50 transition-colors hover:text-foreground"
                                             aria-label={`Demo - ${project.title}`}
                                         >
-                                            <ArrowUpRight className="h-4 w-4" />
+                                            <ArrowUpRight className="h-4 w-4 transition-transform group-hover:scale-110" />
                                         </a>
                                     )}
                                 </div>
@@ -148,15 +144,12 @@ export function Projects() {
                                 {project.techs.map((tech) => (
                                     <span
                                         key={tech}
-                                        className="text-xs text-muted-foreground/50"
+                                        className="text-xs text-muted-foreground/50 group-hover:text-muted-foreground/80 transition-colors"
                                     >
                                         {tech}
                                     </span>
                                 ))}
                             </div>
-
-                            {/* Subtle separator */}
-                            <div className="h-px w-12 bg-border/40" />
                         </div>
                     );
                 })}

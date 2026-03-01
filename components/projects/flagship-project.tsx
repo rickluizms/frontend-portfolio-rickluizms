@@ -5,6 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Github } from "lucide-react";
 
+import { motion, useScroll, useTransform } from "framer-motion";
+
 const TECH_STACK = [
     { name: "Python", icon: "/python.svg" },
     { name: "Docker", icon: "/docker.svg" },
@@ -14,6 +16,18 @@ const TECH_STACK = [
 
 export function FlagshipProject() {
     const sectionRef = useRef<HTMLElement>(null);
+
+    // Track scroll progress of this section
+    const { scrollYProgress } = useScroll({
+        target: sectionRef,
+        // "start end" = top of element hits bottom of viewport
+        // "center center" = center of element hits center of viewport
+        offset: ["start end", "center center"],
+    });
+
+    // Map the scroll progress [0, 1] to a scale [0.85, 1] and opacity [0.4, 1]
+    const scale = useTransform(scrollYProgress, [0, 1], [0.85, 1]);
+    const opacity = useTransform(scrollYProgress, [0, 1], [0.4, 1]);
 
     useEffect(() => {
         const section = sectionRef.current;
@@ -34,8 +48,9 @@ export function FlagshipProject() {
     }, []);
 
     return (
-        <section
+        <motion.section
             ref={sectionRef}
+            style={{ scale, opacity }}
             className="scroll-reveal relative mb-20 w-full overflow-hidden rounded-2xl"
         >
             {/* Background with gradient + grid pattern */}
@@ -122,6 +137,6 @@ export function FlagshipProject() {
                     </a>
                 </div>
             </div>
-        </section>
+        </motion.section>
     );
 }
