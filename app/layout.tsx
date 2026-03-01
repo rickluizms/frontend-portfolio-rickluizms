@@ -15,8 +15,17 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Olá, eu sou o Luiz",
-  description: "Bem vindo ao meu portfólio",
+  title: "Luiz | Desenvolvedor de Software & Engenheiro de Dados",
+  description: "Portfólio de Luiz, especialista em Engenharia de Dados, Backend e Desenvolvimento de Software.",
+  keywords: ["Desenvolvedor", "Engenheiro de Dados", "Backend", "Portfolio", "Luiz", "Data Engineer"],
+  authors: [{ name: "Luiz" }],
+  openGraph: {
+    type: "website",
+    locale: "pt_BR",
+    title: "Luiz | Desenvolvedor de Software & Engenheiro de Dados",
+    description: "Portfólio de Luiz. Conheça meus projetos e experiências em Engenharia de Dados e Desenvolvimento de Software.",
+    siteName: "Portfólio do Luiz",
+  },
 };
 
 export default function RootLayout({
@@ -25,7 +34,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={inter.variable} suppressHydrationWarning>
+    <html lang="pt-BR" className={inter.variable} suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         suppressHydrationWarning
