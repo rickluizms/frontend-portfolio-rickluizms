@@ -23,6 +23,7 @@ const TECH_ICONS: Record<string, string> = {
     "Tailwind CSS": "/tailwind.svg",
     Kafka: "/kafka.svg",
     N8N: "/n8n.svg",
+    n8n: "/n8n.svg",
     OpenAI: "/openai.svg",
     Vercel: "/vercel.svg",
     "Spring Boot": "/java.svg",

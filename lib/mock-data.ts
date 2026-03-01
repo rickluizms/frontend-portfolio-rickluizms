@@ -175,25 +175,80 @@ export const projects = [
         github: "https://github.com/rickluizms/cnpj-datalake",
     },
     {
-        title: "Motor de Cobrança Automatizado",
+        title: "WakaTime Dev Insights",
         description:
-            "Sistema de cobrança inteligente com régua configurável por faixas de atraso. Integração com WhatsApp via Evolution API para envio automático de mensagens, com templates personalizáveis e agendamento.",
-        techs: ["Java", "Spring Boot", "PostgreSQL", "Evolution API", "Docker"],
-        github: "https://github.com/rickluizms",
+            "Dev Insights é um pipeline de ingestão de dados responsável por integrar com a API do WakaTime, extrair métricas de produtividade e persistir dados em PostgreSQL. Arquitetura baseada em dois serviços independentes (Orchestrator + API REST com FastAPI), containerizados com Docker Compose.",
+        techs: [
+            "Python",
+            "FastAPI",
+            "PostgreSQL",
+            "Docker",
+            "Docker Compose",
+            "WakaTime API",
+            "Pydantic",
+            "psycopg2"
+        ],
+        github: "https://github.com/rickluizms/wakatime-dev-insights",
     },
     {
-        title: "Dashboard de Gestão Acadêmica",
+        title: "Fluxo WhatsApp — Transcrição e Buffer Inteligente",
         description:
-            "Plataforma web para visualização de dados acadêmicos com dashboards interativos. Frequência por turma, matrículas, e métricas de desempenho com gráficos dinâmicos.",
-        techs: ["Next.js", "TypeScript", "Shadcn/UI", "Spring Boot", "PostgreSQL"],
-        github: "https://github.com/rickluizms",
+            "Fluxo de integração com WhatsApp via Evolution API construído no n8n, com transcrição automática de áudios (speech-to-text), buffer inteligente de mensagens para consolidação de contexto e envio estruturado ao backend. Inclui controle de sessão, debounce de mensagens e registro persistente das interações.",
+        techs: [
+            "n8n",
+            "WhatsApp",
+            "Evolution API",
+            "Speech-to-Text",
+            "Webhooks",
+            "PostgreSQL",
+            "Docker"
+        ],
+        github: "https://github.com/rickluizms/open-n8n/tree/main/fluxo-n8n-whatsapp",
     },
     {
-        title: "Agente de IA para Candidaturas",
+        title: "Agente de IA com Guardrails e Evaluations",
         description:
-            "Agente inteligente que analisa vagas de emprego, avalia compatibilidade com o perfil do candidato e gerencia o pipeline de candidaturas automaticamente.",
-        techs: ["Python", "LangChain", "LLMs", "Web Scraping", "PostgreSQL"],
-        github: "https://github.com/rickluizms",
+            "Fluxo de agente de IA com validações estruturadas (guardrails), análise de risco de resposta, controle de alucinação e sistema de evaluations automatizadas. Implementa checagens pré e pós-resposta, classificação de intenção, validação semântica e fallback para operador humano quando necessário.",
+        techs: [
+            "n8n",
+            "Python",
+            "LLMs",
+            "Prompt Engineering",
+            "Evaluations",
+            "Guardrails",
+            "OpenAI API"
+        ],
+        github: "https://github.com/rickluizms/open-n8n/tree/main/fluxo-n8n-ia-avancado",
+    },
+    {
+        title: "Arquitetura Multiagente para Atendimento Inteligente",
+        description:
+            "Implementação de arquitetura multiagente com separação de responsabilidades (Agente Classificador, Agente Executor, Agente Validador e Agente Supervisor). Orquestração via n8n com memória compartilhada e controle de estado, permitindo decisões dinâmicas e fluxos complexos de atendimento.",
+        techs: [
+            "n8n",
+            "Python",
+            "LLMs",
+            "LangChain",
+            "State Management",
+            "PostgreSQL",
+            "Docker"
+        ],
+        github: "https://github.com/rickluizms/open-n8n/tree/main/fluxo-n8n-ia-multiagente",
+    },
+    {
+        title: "Servidor MCP Integrado a API Interna",
+        description:
+            "Servidor MCP (Model Context Protocol) responsável por expor ferramentas internas para agentes de IA, integrado a uma API proprietária. Permite execução segura de ações (consulta de dados, atualização de registros, disparo de eventos) com autenticação, auditoria e controle de permissões.",
+        techs: [
+            "n8n",
+            "Python",
+            "MCP",
+            "REST API",
+            "JWT",
+            "PostgreSQL",
+            "Docker"
+        ],
+        github: "https://github.com/rickluizms/open-n8n/tree/main/fluxo-n8n-mcp-server",
     },
     {
         title: "Portfólio Pessoal",
@@ -201,30 +256,6 @@ export const projects = [
             "Este site! Construído com Next.js e Tailwind CSS, com animações de digitação, scroll reveal e tema dark/light. Design minimalista e responsivo.",
         techs: ["Next.js", "TypeScript", "Tailwind CSS", "Lucide Icons"],
         github: "https://github.com/rickluizms/frontend-portfolio-rickluizms",
-        live: "#",
-    },
-    {
-        title: "Portfólio Pessoal 2",
-        description:
-            "Este site! Construído com Next.js e Tailwind CSS, com animações de digitação, scroll reveal e tema dark/light. Design minimalista e responsivo.",
-        techs: ["Next.js", "TypeScript", "Tailwind CSS", "Lucide Icons"],
-        github: "https://github.com/rickluizms/portfolio-rickluizms",
-        live: "#",
-    },
-    {
-        title: "Portfólio Pessoal 3",
-        description:
-            "Este site! Construído com Next.js e Tailwind CSS, com animações de digitação, scroll reveal e tema dark/light. Design minimalista e responsivo.",
-        techs: ["Next.js", "TypeScript", "Tailwind CSS", "Lucide Icons"],
-        github: "https://github.com/rickluizms/portfolio-rickluizms",
-        live: "#",
-    },
-    {
-        title: "Portfólio Pessoal 4",
-        description:
-            "Este site! Construído com Next.js e Tailwind CSS, com animações de digitação, scroll reveal e tema dark/light. Design minimalista e responsivo.",
-        techs: ["Next.js", "TypeScript", "Tailwind CSS", "Lucide Icons"],
-        github: "https://github.com/rickluizms/portfolio-rickluizms",
         live: "#",
     },
 ];
