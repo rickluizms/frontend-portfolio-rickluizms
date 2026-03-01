@@ -10,11 +10,11 @@ export default function GitHubContributions() {
                 <p className="mt-1 text-xs text-muted-foreground/60">
                     Últimos 365 dias
                 </p>
-                <div className="mt-4">
+                <div className="mt-4 flex justify-center">
                     <img
                         src="https://ghchart.rshah.org/rickluizms"
                         alt="GitHub Contributions"
-                        className="w-full opacity-80"
+                        className="w-[75%] opacity-80"
                     />
                 </div>
             </CardContent>
