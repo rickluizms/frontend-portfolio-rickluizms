@@ -111,7 +111,7 @@ export function Stats() {
             <Highlights overall={overall} />
 
             <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-                <LanguageChart languages={languages} />
+                <LanguageChart languages={languages} totalHours={overall?.total_hours ?? 0} />
                 <LanguageBarChart languages={languages} />
                 <DailyActivityChart summaries={summaries} />
                 <GitHubContributions />

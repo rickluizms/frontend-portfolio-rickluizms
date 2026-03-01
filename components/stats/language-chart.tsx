@@ -25,9 +25,10 @@ const CHART_COLORS = [
 
 interface LanguageChartProps {
     languages: LanguageStats[];
+    totalHours: number;
 }
 
-export function LanguageChart({ languages }: LanguageChartProps) {
+export function LanguageChart({ languages, totalHours }: LanguageChartProps) {
     const languagePieData = useMemo(() => {
         return languages.slice(0, 5).map((lang, i) => ({
             language: lang.name?.toLowerCase() ?? "unknown",
@@ -46,11 +47,6 @@ export function LanguageChart({ languages }: LanguageChartProps) {
         });
         return config;
     }, [languages]);
-
-    const totalLanguageHours = useMemo(
-        () => languagePieData.reduce((acc, curr) => acc + curr.hours, 0),
-        [languagePieData]
-    );
 
     if (languagePieData.length === 0) return null;
 
@@ -96,7 +92,7 @@ export function LanguageChart({ languages }: LanguageChartProps) {
                                                     y={viewBox.cy}
                                                     className="fill-foreground text-3xl font-bold"
                                                 >
-                                                    {Math.round(totalLanguageHours)}
+                                                    {Math.round(totalHours)}
                                                 </tspan>
                                                 <tspan
                                                     x={viewBox.cx}
