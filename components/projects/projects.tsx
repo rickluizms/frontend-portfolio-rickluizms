@@ -4,6 +4,10 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { Github, ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { projects } from "@/lib/mock-data";
+import { FlagshipProject } from "./flagship-project";
+
+const FLAGSHIP_TITLE = "Data Lake CNPJ";
+const otherProjects = projects.filter((p) => p.title !== FLAGSHIP_TITLE);
 
 const ITEMS_PER_PAGE = 6;
 
@@ -29,8 +33,8 @@ export function Projects() {
     const sectionRef = useRef<HTMLElement>(null);
     const [page, setPage] = useState(0);
 
-    const totalPages = Math.ceil(projects.length / ITEMS_PER_PAGE);
-    const paginatedProjects = projects.slice(
+    const totalPages = Math.ceil(otherProjects.length / ITEMS_PER_PAGE);
+    const paginatedProjects = otherProjects.slice(
         page * ITEMS_PER_PAGE,
         (page + 1) * ITEMS_PER_PAGE
     );
@@ -63,7 +67,15 @@ export function Projects() {
                 Projetos
             </h2>
 
-            <div className="mt-10 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="mt-10">
+                <FlagshipProject />
+            </div>
+
+            <h3 className="mt-4 mb-10 text-lg font-semibold tracking-tight text-muted-foreground">
+                Outros Projetos
+            </h3>
+
+            <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3">
                 {paginatedProjects.map((project) => {
                     const techsWithIcons = project.techs.filter(
                         (t) => TECH_ICONS[t]
@@ -116,7 +128,7 @@ export function Projects() {
                                     {techsWithIcons.map((tech) => (
                                         <div
                                             key={tech}
-                                            className="relative h-5 w-5 shrink-0 opacity-45"
+                                            className="relative h-5 w-5 shrink-0"
                                             title={tech}
                                         >
                                             <Image
@@ -124,7 +136,7 @@ export function Projects() {
                                                 alt={tech}
                                                 width={20}
                                                 height={20}
-                                                className="h-5 w-5 object-contain dark:invert"
+                                                className="h-5 w-5 object-contain"
                                             />
                                         </div>
                                     ))}

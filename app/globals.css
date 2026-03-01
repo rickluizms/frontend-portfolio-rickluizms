@@ -152,3 +152,21 @@
   opacity: 1;
   transform: translateY(0);
 }
+
+@keyframes glow-pulse {
+
+  0%,
+  100% {
+    box-shadow: 0 0 15px oklch(0.546 0.245 262.881 / 0.15),
+      0 0 30px oklch(0.546 0.245 262.881 / 0.05);
+  }
+
+  50% {
+    box-shadow: 0 0 25px oklch(0.546 0.245 262.881 / 0.25),
+      0 0 50px oklch(0.546 0.245 262.881 / 0.1);
+  }
+}
+
+.arch-node-glow {
+  animation: glow-pulse 2s ease-in-out infinite;
+}
