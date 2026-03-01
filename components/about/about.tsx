@@ -80,7 +80,7 @@ export function About() {
         >
             <div className="flex flex-col items-start justify-start">
                 <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl lg:text-4xl">
-                    Sobre mim
+
                 </h2>
             </div>
 
@@ -89,9 +89,8 @@ export function About() {
                 {/* ── Left: Headline + Vertical navigation ── */}
                 <div className="flex flex-col">
                     {/* ── Headline ────────────────────────── */}
-
                     <p className="text-3xl font-bold tracking-tight text-foreground sm:text-3xl lg:text-3xl">
-                        Complexidade vira clareza. Dados viram decisões.
+                        Sobre mim:
                     </p>
 
                     {/* ── Navigation ──────────────────────── */}
