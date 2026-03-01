@@ -1,0 +1,12 @@
+services:
+  portfolio-frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    environment:
+      - NODE_ENV=production
+      # - NEXT_PUBLIC_API_URL=https://sua-api.com
+    # Repare que NÃO há mapeamento de portas (ports: ["3000:3000"]).
+    # O Easypanel cuida do roteamento internamente para o serviço através do Traefik.
+    # Repare que NÃO há `container_name`, o swarm/easypanel nomeará automaticamente para evitar colisões.
