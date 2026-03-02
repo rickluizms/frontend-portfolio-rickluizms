@@ -1,0 +1,1048 @@
+{
+  "name": "Agente de IA - Recepção",
+  "nodes": [
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "conversationId",
+              "type": "number"
+            },
+            {
+              "name": "conversation"
+            },
+            {
+              "name": "remoteJid"
+            },
+            {
+              "name": "agent_id",
+              "type": "number"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -1472,
+        -160
+      ],
+      "id": "03ea8059-5070-47ac-b483-e4db0198f6f3",
+      "name": "When Executed by Another Workflow"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('Merge').item.json.conversation }}",
+        "hasOutputParser": true,
+        "options": {
+          "systemMessage": "={{ $json.system_prompt }}"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [
+        1520,
+        0
+      ],
+      "id": "26b91377-26c7-4f11-bb80-732e06db6e23",
+      "name": "AI Agent",
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "gpt-4o-mini"
+        },
+        "builtInTools": {},
+        "options": {
+          "textFormat": {
+            "textOptions": {
+              "type": "json_schema",
+              "schema": "={{ $('Set Fields').item.json.prompt.outputSchema.toJsonString() }}"
+            }
+          },
+          "temperature": 0.3
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.3,
+      "position": [
+        1008,
+        368
+      ],
+      "id": "bc9d9882-c779-4c5c-85b6-ddda6add9d70",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "1d8jBYQ6UMLqYoa5",
+          "name": "UserNine - Rickluizms"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $('When Executed by Another Workflow').item.json.conversationId }}",
+        "tableName": "n8n_chat_histories_test333123"
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryPostgresChat",
+      "typeVersion": 1.3,
+      "position": [
+        1184,
+        368
+      ],
+      "id": "7594952c-eccc-4514-a80b-e5b4ff1c440c",
+      "name": "Postgres Chat Memory",
+      "credentials": {
+        "postgres": {
+          "id": "jfrRNvbhO0z9BG9P",
+          "name": "Agents Database"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "description": "use essa tool para transferir o atendimento para o setor comercial",
+        "workflowId": {
+          "__rl": true,
+          "value": "QUkl7UcbkuLl5Kfq",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/QUkl7UcbkuLl5Kfq",
+          "cachedResultName": "Transferir e Atribuir"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "team_id": 1,
+            "conversation_id": "={{ $('When Executed by Another Workflow').item.json.conversation }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "team_id",
+              "displayName": "team_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "number",
+              "removed": false
+            },
+            {
+              "id": "conversation_id",
+              "displayName": "conversation_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "number",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2.2,
+      "position": [
+        1504,
+        368
+      ],
+      "id": "023e04d3-6b15-4aa6-a9ec-ead7c7581324",
+      "name": "transferir_comercial"
+    },
+    {
+      "parameters": {
+        "description": "use essa tool para transferir o atendimento para o setor pedagogico",
+        "workflowId": {
+          "__rl": true,
+          "value": "QUkl7UcbkuLl5Kfq",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/QUkl7UcbkuLl5Kfq",
+          "cachedResultName": "Transferir e Atribuir"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "team_id": 2,
+            "conversation_id": "={{ $('When Executed by Another Workflow').item.json.conversation }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "team_id",
+              "displayName": "team_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "number",
+              "removed": false
+            },
+            {
+              "id": "conversation_id",
+              "displayName": "conversation_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "number",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2.2,
+      "position": [
+        1680,
+        368
+      ],
+      "id": "9da29bfe-ad45-431a-859f-7ad597c0ddc1",
+      "name": "transferir_pedagogico"
+    },
+    {
+      "parameters": {
+        "description": "use essa tool para transferir o atendimento para o setor financeiro",
+        "workflowId": {
+          "__rl": true,
+          "value": "QUkl7UcbkuLl5Kfq",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/QUkl7UcbkuLl5Kfq",
+          "cachedResultName": "Transferir e Atribuir"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "team_id": 4,
+            "conversation_id": "={{ $('When Executed by Another Workflow').item.json.conversation }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "team_id",
+              "displayName": "team_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "number",
+              "removed": false
+            },
+            {
+              "id": "conversation_id",
+              "displayName": "conversation_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "number",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2.2,
+      "position": [
+        1856,
+        368
+      ],
+      "id": "8d959bf8-f3f3-416f-bc7e-a22fc40c1669",
+      "name": "transferir_financeiro"
+    },
+    {
+      "parameters": {
+        "schemaType": "manual",
+        "inputSchema": "={{ $('Set Fields').item.json.prompt.outputSchema.toJsonString() }}",
+        "autoFix": true,
+        "customizeRetryPrompt": true
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [
+        2128,
+        368
+      ],
+      "id": "65f6a317-233a-41e9-aa25-7a89a002494b",
+      "name": "Structured Output Parser"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4.1-mini"
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.3,
+      "position": [
+        2288,
+        496
+      ],
+      "id": "189e1b27-1c4c-4ee4-9d08-710963134b09",
+      "name": "OpenAI Chat Model1",
+      "credentials": {
+        "openAiApi": {
+          "id": "1d8jBYQ6UMLqYoa5",
+          "name": "UserNine - Rickluizms"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "=https://localhost:8000/api/agents/1",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-Api-Key",
+              "value": "="
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        -144,
+        0
+      ],
+      "id": "4e46c048-4166-4536-bdb8-be4719603ee5",
+      "name": "Fetch Agent"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b5a1db29-3671-4788-be12-93bf80024605",
+              "name": "conversationId",
+              "value": "={{ $('Merge').item.json.conversationId }}",
+              "type": "number"
+            },
+            {
+              "id": "ef43ad48-013b-433a-aa7e-eb412231eca4",
+              "name": "conversation",
+              "value": "={{ $('Merge').item.json.conversation }}",
+              "type": "string"
+            },
+            {
+              "id": "00e63a2b-d7c7-4660-a283-db3a3b47fad4",
+              "name": "remoteJid",
+              "value": "={{ $('Merge').item.json.remoteJid }}",
+              "type": "string"
+            },
+            {
+              "id": "ec64b044-6a04-475b-bf21-4fb5faa25b4f",
+              "name": "prompt.identity",
+              "value": "={{ $('Fetch Agent').item.json.prompt.identity }}",
+              "type": "string"
+            },
+            {
+              "id": "6d467bd9-2526-4e55-b620-5dbba646b07d",
+              "name": "prompt.objective",
+              "value": "={{ $('Fetch Agent').item.json.prompt.objective }}",
+              "type": "string"
+            },
+            {
+              "id": "b00d1a3f-a932-4c20-89f2-3540a400e7a3",
+              "name": "prompt.context",
+              "value": "={{ $('Fetch Agent').item.json.prompt.context }}",
+              "type": "string"
+            },
+            {
+              "id": "14b8ca22-3df5-4341-bbe1-948f28354eb9",
+              "name": "prompt.rules",
+              "value": "={{ $('Fetch Agent').item.json.prompt.rules }}",
+              "type": "string"
+            },
+            {
+              "id": "1825c21e-6b34-4fa3-b7df-c2c67213af6c",
+              "name": "prompt.outputSchema",
+              "value": "={{ $('Fetch Agent').item.json.prompt.outputSchema }}",
+              "type": "object"
+            },
+            {
+              "id": "bfce3dc0-5e06-40a0-9c71-6bb0dd76057c",
+              "name": "prompt.qaExamples",
+              "value": "={{ $json.qa_formatted }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        560,
+        0
+      ],
+      "id": "d9de84a5-e274-4c74-8295-fdfd380863d8",
+      "name": "Set Fields"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "15061c4f-b999-4790-9ce6-a9898540c9f6",
+              "name": "system_prompt",
+              "value": "=- Hoje: {{ $now }}\n- conversationId: {{ $json.conversationId }}\n\n## Identidade do Agente\n\n{{ $json.prompt.identity }}\n\n## Objetivo do Agente\n\n{{ $json.prompt.objective }}\n\n## Contexto do Agente\n\n{{ $json.prompt.context }}\n\n## Regras do Agente\n\n{{ $json.prompt.rules }}\n\n## QA Examples\n\n{{ $json.prompt.qaExamples }}\n\n## Mensagem de Saudação inicial\n\n\"Olá, tudo bem? Como posso ajudar hoje?\"",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        800,
+        0
+      ],
+      "id": "fc80a053-fcc5-4984-8935-96a259d90355",
+      "name": "Set System Prompt"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Espera receber o JSON exatamente como no exemplo enviado\nconst qaExamples = $input.first().json.prompt.qaExamples\n\n// Ordena pelos campos \"order\"\nqaExamples.sort((a, b) => a.order - b.order);\n\nlet output = \"## Exemplos de Perguntas e Respostas\\n\\n\";\n\nqaExamples.forEach((qa, index) => {\n  output += `### Exemplo ${index + 1}\\n\\n`;\n  output += `**Pergunta:** ${qa.question}\\n\\n`;\n  output += `**Resposta:** ${qa.answer.trim()}\\n\\n`;\n});\n\nreturn [\n  {\n    json: {\n      qa_formatted: output\n    }\n  }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        352,
+        0
+      ],
+      "id": "bf8f380b-5b93-4a5e-b717-bc64a0e1787a",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "text": "={{ $json.conversation }}",
+        "guardrails": {
+          "jailbreak": {
+            "value": {
+              "threshold": 0.7
+            }
+          },
+          "nsfw": {
+            "value": {
+              "threshold": 0.7,
+              "customizePrompt": true
+            }
+          }
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.guardrails",
+      "typeVersion": 2,
+      "position": [
+        -1152,
+        -160
+      ],
+      "id": "22466622-4dda-4010-b20a-5ca09974a1a8",
+      "name": "Guardrails"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "gpt-4o-mini"
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.3,
+      "position": [
+        -1008,
+        -16
+      ],
+      "id": "6513cf57-2980-45b2-b8f0-dcb24c06c358",
+      "name": "OpenAI Chat Model2",
+      "credentials": {
+        "openAiApi": {
+          "id": "1d8jBYQ6UMLqYoa5",
+          "name": "UserNine - Rickluizms"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "source": "googleSheets",
+        "documentId": {
+          "__rl": true,
+          "value": "1byPtOB2mOYNnvv4qyMkMTRzqRHRKmxm4jeVLNvK_th0",
+          "mode": "list",
+          "cachedResultName": "Agente IA - Recepção (Evaluation)",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1byPtOB2mOYNnvv4qyMkMTRzqRHRKmxm4jeVLNvK_th0/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Página1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1byPtOB2mOYNnvv4qyMkMTRzqRHRKmxm4jeVLNvK_th0/edit#gid=0"
+        }
+      },
+      "type": "n8n-nodes-base.evaluationTrigger",
+      "typeVersion": 4.7,
+      "position": [
+        -976,
+        320
+      ],
+      "id": "8fe852b0-194c-4548-8dc5-0a3ebb604bb6",
+      "name": "When fetching a dataset row",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "lMRXDyHEUTZ3BVUr",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "98e7022a-9c99-460a-bee5-335dc518a50c",
+              "name": "conversation",
+              "value": "={{ $json.message }}",
+              "type": "string"
+            },
+            {
+              "id": "22d48058-94bc-44f7-a84f-476e281defc7",
+              "name": "agent_id",
+              "value": "1",
+              "type": "string"
+            },
+            {
+              "id": "1b6ba348-a557-49f4-aab6-94761432a528",
+              "name": "remoteJid",
+              "value": "1",
+              "type": "string"
+            },
+            {
+              "id": "3f242ef2-d3c6-4d47-affe-c02e3a3c6b41",
+              "name": "conversationId",
+              "value": "1",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -784,
+        320
+      ],
+      "id": "a2b62187-7bfc-4f8b-8322-69b28803ef29",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "source": "googleSheets",
+        "documentId": {
+          "__rl": true,
+          "value": "1byPtOB2mOYNnvv4qyMkMTRzqRHRKmxm4jeVLNvK_th0",
+          "mode": "list",
+          "cachedResultName": "Agente IA - Recepção (Evaluation)",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1byPtOB2mOYNnvv4qyMkMTRzqRHRKmxm4jeVLNvK_th0/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Página1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1byPtOB2mOYNnvv4qyMkMTRzqRHRKmxm4jeVLNvK_th0/edit#gid=0"
+        },
+        "outputs": {
+          "values": [
+            {
+              "outputName": "output.sector",
+              "outputValue": "={{ $('AI Agent').item.json.output.sector }}"
+            },
+            {
+              "outputName": "output.serviceType",
+              "outputValue": "={{ $('AI Agent').item.json.output.serviceType }}"
+            },
+            {
+              "outputName": "output.confidence",
+              "outputValue": "={{ $('AI Agent').item.json.output.confidence }}"
+            },
+            {
+              "outputName": "output.nextAction",
+              "outputValue": "={{ $('AI Agent').item.json.output.nextAction }}"
+            },
+            {
+              "outputName": "output.message",
+              "outputValue": "={{ $('AI Agent').item.json.output.message }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.evaluation",
+      "typeVersion": 4.8,
+      "position": [
+        2480,
+        -144
+      ],
+      "id": "4d7e8dff-8955-43a2-bb91-00848246075a",
+      "name": "Evaluation1",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "lMRXDyHEUTZ3BVUr",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "checkIfEvaluating"
+      },
+      "type": "n8n-nodes-base.evaluation",
+      "typeVersion": 4.8,
+      "position": [
+        2224,
+        -128
+      ],
+      "id": "b94faa2b-609a-4f5f-afa9-3a9ee5f647d5",
+      "name": "Evaluation"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        -528,
+        0
+      ],
+      "id": "7a0b2afc-c681-4f06-8572-3e206355acf3",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "6522f05e-1ab5-41dd-9827-6008f3e7e1b6",
+              "name": "conversationId",
+              "value": "={{ $('When Executed by Another Workflow').item.json.conversationId }}",
+              "type": "string"
+            },
+            {
+              "id": "d9590688-5246-42a7-8d78-6bfd0ff6a874",
+              "name": "conversation",
+              "value": "={{ $('When Executed by Another Workflow').item.json.conversation }}",
+              "type": "string"
+            },
+            {
+              "id": "7a01b525-6bec-4421-b2e7-150ff83602f5",
+              "name": "remoteJid",
+              "value": "={{ $('When Executed by Another Workflow').item.json.remoteJid }}",
+              "type": "string"
+            },
+            {
+              "id": "182682c5-272f-404f-81ea-e98b6f372091",
+              "name": "agent_id",
+              "value": "={{ $('When Executed by Another Workflow').item.json.agent_id }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -800,
+        -176
+      ],
+      "id": "d83f4284-6da0-49ca-807d-aae0228d87b9",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "content": "## 🎯 Objetivo\n\n> Realizar triagem automática das mensagens recebidas,\nclassificando a intenção do usuário e redirecionando\npara o setor adequado.\n\n---\n\n## 🏢 Setores Atendidos\n\n- 🟦 Comercial → Matrículas, Cursos, Valores\n- 🟨 Financeiro → 2ª via de boleto, Renegociação\n- 🟩 Pedagógico → Aulas, Horários, Informações acadêmicas\n\n---\n\n## ⚙️ Arquitetura do Workflow\n\nEste workflow é executado por outro workflow (orquestrador).\n\n### 🔹 Inputs esperados\n- conversationId (number)\n- conversation (string)\n- remoteJid (string)\n- agent_id (number)\n\nTambém pode ser executado em modo:\n→ Evaluation (Google Sheets dataset)\n\n---\n\n## 🤖 Motor de IA\n\n- Modelo: gpt-4o-mini\n- Saída estruturada via JSON Schema\n- Uso de tools para transferência automática\n- Guardrails habilitados (Jailbreak + NSFW)\n\n---\n\n## 🔄 Ações Automáticas\n\nDependendo da classificação:\n- Aciona workflow de transferência\n- Ou responde diretamente ao usuário",
+        "height": 1104,
+        "width": 800,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -2464,
+        -544
+      ],
+      "id": "c340d421-1f59-4edf-8bb4-555f1e7a9a7d",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n## Chatwoot tools\n\nPermitem ao agente transferir a conversa.\n\nMapeamento:\n- Comercial → team_id = 1\n- Pedagógico → team_id = 2\n- Financeiro → team_id = 4\n\nWorkflow chamado:\n\"Transferir e Atribuir\"\n\nO agente decide quando usar.",
+        "height": 576,
+        "width": 592,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1424,
+        304
+      ],
+      "id": "6877c5c8-8cc1-4830-a75c-04fd451f1ac3",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "content": "## Agent Constructor\n\nPode receber **prompts diferentes** para testes.",
+        "height": 416,
+        "width": 432,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1440,
+        -176
+      ],
+      "id": "9c961e85-bf4f-4baf-ac6b-a143872e17fa",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "content": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n## Output Parser\n\nConfigurado no prompt pela **API**",
+        "height": 464,
+        "width": 432,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2048,
+        304
+      ],
+      "id": "58c47c47-1482-42d9-b5ef-4b4885e94815",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "content": "## Moderação e Segurança\n\nValida a mensagem do usuário antes de processar.\n\nRegras:\n- Jailbreak threshold: 0.7\n- NSFW threshold: 0.7\n\nSe falhar → fluxo não continua.\nSe passar → segue para processamento normal.",
+        "height": 624,
+        "width": 592,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -1232,
+        -480
+      ],
+      "id": "2c877a00-45f9-4fa6-8da2-fc42608dda57",
+      "name": "Sticky Note4"
+    },
+    {
+      "parameters": {
+        "content": "## 📥 Carregamento da Configuração do Agente\n\nBusca no backend:\nGET /api/agents/{id}\n\nRetorna:\n- identity\n- objective\n- context\n- rules\n- outputSchema\n- qaExamples\n\nEsses dados são usados para montar o system prompt.",
+        "height": 656,
+        "width": 448,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -320,
+        -464
+      ],
+      "id": "b96367e3-8188-4ca9-acf2-52f70574de3e",
+      "name": "Sticky Note5"
+    },
+    {
+      "parameters": {
+        "content": "## 🧠 Construção do System Prompt\n\n1. Ordena QA Examples por \"order\"\n2. Formata exemplos em Markdown\n3. Injeta no System Prompt:\n\nEstrutura:\n- Data atual\n- conversationId\n- Identidade\n- Objetivo\n- Contexto\n- Regras\n- QA Examples\n- Saudação inicial\n\nGera system_prompt final para o Agent.",
+        "height": 656,
+        "width": 672,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        288,
+        -464
+      ],
+      "id": "698d9146-a236-4d94-92e1-268e4430e144",
+      "name": "Sticky Note6"
+    },
+    {
+      "parameters": {
+        "content": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n## Configurações do Modelo e Memória\n\n- Obter configurações da API ",
+        "height": 416,
+        "width": 496,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        896,
+        304
+      ],
+      "id": "e2a3de9a-8a1c-4f31-beb3-c34aa61281a4",
+      "name": "Sticky Note7"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres Chat Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "transferir_comercial": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "transferir_pedagogico": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "transferir_financeiro": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Structured Output Parser",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "Guardrails",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch Agent": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Fields": {
+      "main": [
+        [
+          {
+            "node": "Set System Prompt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set System Prompt": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "Set Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Evaluation",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model2": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Guardrails",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Guardrails": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        []
+      ]
+    },
+    "When fetching a dataset row": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Evaluation": {
+      "main": [
+        [
+          {
+            "node": "Evaluation1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Fetch Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "edf91e63-903a-4b5b-968e-9a9e37349dbe",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "b69fc2d078b23be97ced07710b85eb6742cca2b7694c2cf62189ebb9928ae526"
+  },
+  "id": "BWjJIf2AsZZpdK8k",
+  "tags": []
+}

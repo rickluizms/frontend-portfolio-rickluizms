@@ -2,6 +2,20 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
+n8n-demo {
+  --n8n-frame-background-color: #fafafa;
+  --n8n-json-background-color: #f5f5f5;
+  --n8n-copy-button-background-color: #e5e5e5;
+  --n8n-workflow-min-height: 500px;
+  --n8n-iframe-border-radius: 30px;
+}
+
+.dark n8n-demo {
+  --n8n-frame-background-color: #000000;
+  --n8n-json-background-color: #1f1f1f;
+  --n8n-copy-button-background-color: #333333;
+}
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
@@ -83,6 +97,7 @@
 }
 
 .dark {
+  --black: oklch(0% 0 0);
   --background: oklch(0.141 0.005 285.823);
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.21 0.006 285.885);

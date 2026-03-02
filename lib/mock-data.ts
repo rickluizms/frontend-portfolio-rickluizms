@@ -219,6 +219,8 @@ export const projects = [
             "OpenAI API"
         ],
         github: "https://github.com/rickluizms/open-n8n/tree/main/fluxo-n8n-ia-avancado",
+        n8n_preview: true,
+        n8n_preview_path: "/workflows/fluxo-n8n-ia-avancado.json"
     },
     {
         title: "Arquitetura Multiagente para Atendimento Inteligente",

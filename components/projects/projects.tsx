@@ -2,9 +2,11 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-import { Github, ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { Github, ArrowUpRight, ChevronLeft, ChevronRight, Eye } from "lucide-react";
 import { projects } from "@/lib/mock-data";
 import { FlagshipProject } from "./flagship-project";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import { N8nWorkflowViewer } from "@/components/ui/n8n-viewer";
 
 const FLAGSHIP_TITLE = "Data Lake CNPJ";
 const otherProjects = projects.filter((p) => p.title !== FLAGSHIP_TITLE);
@@ -33,6 +35,7 @@ const TECH_ICONS: Record<string, string> = {
 export function Projects() {
     const sectionRef = useRef<HTMLElement>(null);
     const [page, setPage] = useState(0);
+    const [selectedN8nProject, setSelectedN8nProject] = useState<{ title: string, path: string } | null>(null);
 
     const totalPages = Math.ceil(otherProjects.length / ITEMS_PER_PAGE);
     const paginatedProjects = otherProjects.slice(
@@ -110,6 +113,15 @@ export function Projects() {
                                         >
                                             <ArrowUpRight className="h-4 w-4 transition-transform group-hover:scale-110" />
                                         </a>
+                                    )}
+                                    {project.n8n_preview && project.n8n_preview_path && (
+                                        <button
+                                            onClick={() => setSelectedN8nProject({ title: project.title, path: project.n8n_preview_path as string })}
+                                            className="p-1.5 text-muted-foreground/50 transition-colors hover:text-foreground cursor-pointer"
+                                            aria-label={`Visualizar Workflow - ${project.title}`}
+                                        >
+                                            <Eye className="h-4 w-4 transition-transform group-hover:scale-110" />
+                                        </button>
                                     )}
                                 </div>
                             </div>
@@ -194,6 +206,23 @@ export function Projects() {
                     </button>
                 </div>
             )}
+
+            <Dialog open={!!selectedN8nProject} onOpenChange={(open) => !open && setSelectedN8nProject(null)}>
+                <DialogContent className="sm:max-w-[95vw] max-w-[90vw] h-[95vh] p-0 flex flex-col overflow-hidden bg-[#fafafa] dark:bg-black">
+                    <DialogHeader className="p-4 border-b pb-4 shrink-0 px-6">
+                        <DialogTitle className="text-xl">Workflow: {selectedN8nProject?.title}</DialogTitle>
+                        <DialogDescription>
+                            Visualização interativa (read-only) do pipeline executado no n8n.
+                        </DialogDescription>
+                    </DialogHeader>
+                    <div className="flex-1 overflow-y-auto overflow-x-hidden relative bg-[#fafafa] dark:bg-black p-5">
+                        {selectedN8nProject && (
+                            <N8nWorkflowViewer workflowUrl={selectedN8nProject.path} className="rounded-none border-0" />
+                        )}
+                    </div>
+                </DialogContent>
+            </Dialog>
+
         </section>
     );
 }
