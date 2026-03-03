@@ -238,19 +238,21 @@ export const projects = [
         github: "https://github.com/rickluizms/open-n8n/tree/main/fluxo-n8n-ia-multiagente",
     },
     {
-        title: "Servidor MCP Integrado a API Interna",
+        title: "UserNine Nexus CRM",
         description:
-            "Servidor MCP (Model Context Protocol) responsável por expor ferramentas internas para agentes de IA, integrado a uma API proprietária. Permite execução segura de ações (consulta de dados, atualização de registros, disparo de eventos) com autenticação, auditoria e controle de permissões.",
+            "Plataforma orientada a domínio e orquestração de pipelines de engajamento automatizado. Destaque para a integração profunda com n8n, permitindo a construção de agentes estruturados e prompts modulares, além da implementação de output parsers para extração de entidades via LLMs. Arquitetura escalável suportada por filas RabbitMQ e Redis, sincronizando fluxos de IA com extrações de dados via web scraping em Python.",
         techs: [
-            "n8n",
+            "Java",
+            "Spring Boot",
+            "React",
+            "Shadcn/UI",
             "Python",
-            "MCP",
-            "REST API",
-            "JWT",
             "PostgreSQL",
+            "Redis",
+            "RabbitMQ",
+            "n8n",
             "Docker"
         ],
-        github: "https://github.com/rickluizms/open-n8n/tree/main/fluxo-n8n-mcp-server",
     },
     {
         title: "Portfólio Pessoal",
