@@ -12,9 +12,8 @@ import {
 export const HERO_SUFFIXES = [
     "o Luiz!",
     "engenheiro de dados.",
-    "especialista em pipelines ETL/ELT.",
-    "arquiteto de dados em Azure & Databricks.",
-    "desenvolvedor de soluções com LLMs.",
+    "analista de dados e BI.",
+    "desenvolvedor Python.",
 ]
 
 // ── About ──────────────────────────────────────────────
@@ -78,51 +77,59 @@ export const aboutSections = [
 
 export const skills = [
     {
-        category: "Engenharia de Dados",
+        category: "Linguagens & Big Data",
         icon: Database,
         items: [
             "Python",
+            "Java",
             "SQL",
-            "Apache Airflow",
+            "PySpark",
             "Apache Spark",
             "Databricks",
-            "PostgreSQL",
+            "Delta Lake",
+            "Hadoop",
         ],
     },
     {
-        category: "Cloud & Data Platform",
+        category: "Engenharia de Dados",
         icon: Cloud,
         items: [
-            "Microsoft Azure",
-            "Azure App Services",
-            "Azure SQL Database",
-            "Amazon S3",
+            "ETL/ELT",
+            "Apache Airflow",
             "Data Warehouse",
-            "Modelagem Dimensional",
+            "Data Lake",
+            "Lakehouse",
+            "Arquitetura Medallion",
+            "Mensageria (Kafka/RabbitMQ)",
+            "Celery",
         ],
     },
     {
-        category: "Inteligência Artificial",
+        category: "IA & Integração",
         icon: Brain,
         items: [
             "LLMs",
             "RAG",
-            "Arquitetura Multiagente",
-            "MCP Tools",
-            "N8N",
-            "Integração via WhatsApp",
+            "Embeddings",
+            "Vector DB (pgvector)",
+            "Agents",
+            "LangChain",
+            "APIs REST",
+            "Web Scraping",
         ],
     },
     {
-        category: "Desenvolvimento & Integração",
+        category: "Bancos, Cloud & Analytics",
         icon: Code2,
         items: [
-            "Python (Backend)",
-            "React",
-            "APIs REST",
-            "Web Scraping",
-            "Firebird",
+            "PostgreSQL",
+            "MongoDB",
+            "Microsoft Azure",
+            "AWS",
+            "Docker",
+            "CI/CD",
             "Power BI",
+            "Dashboards & KPIs",
         ],
     },
 ];
@@ -131,36 +138,28 @@ export const skills = [
 
 export const experiences = [
     {
-        role: "Engenheiro de Dados",
+        role: "Engenheiro de Dados e Desenvolvedor",
         company: "Nova Didata",
         period: "Nov 2025 — Presente",
         description:
-            "Desenvolvimento de pipeline de ingestão integrado ao Firebird com Python e Airflow, implementando atualizações incrementais a cada 15 minutos. Reestruturação de modelagem relacional em PostgreSQL, desenvolvimento de régua de cobrança automatizada (Python + React) e construção de sistema multiagente com LLMs e RAG integrado ao CRM via WhatsApp.",
-        techs: ["Python", "SQL", "Apache Airflow", "PostgreSQL", "React", "LLMs"],
+            "Refatoração de pipeline ETL (legado -> resiliência), desenvolvimento de régua de cobranças automatizada (Java + React), criação de agentes de IA para atendimento e inscrições (LLMs), implementação de pipeline RAG (pgvector) e plataforma de BI financeira/pedagógica (Java + React).",
+        techs: ["Python", "Java", "SQL", "React", "LLMs", "RAG", "pgvector", "PostgreSQL"],
     },
     {
-        role: "Analista de Dados Jr",
+        role: "Analista de Dados",
         company: "Moreira Car",
         period: "Jan 2024 — Nov 2025",
         description:
-            "Desenvolvimento de sistema web integrado ao WhatsApp e SIGE, criação de agente de IA para registro automático de receitas e despesas utilizando N8N e MCP Tools, além de automação de integração de catálogos de fornecedores via web scraping em Python.",
-        techs: ["Python", "N8N", "MCP Tools", "Web Scraping", "WhatsApp API"],
+            "Desenvolvimento de sistema web integrado ao WhatsApp e ERP Sige (API) para orçamentação, busca de veículos por placa via web scraping (<3s) e coleta automática de dados de +10 catálogos de fornecedores.",
+        techs: ["React", "Python", "Web Scraping", "API REST", "WhatsApp"],
     },
     {
         role: "Analista de Dados Jr",
         company: "Nova Didata",
         period: "Dez 2022 — Dez 2023",
         description:
-            "Desenvolvimento de automações em Python para geração de certificados e documentos, criação de pipeline de ingestão de dados, modelagem dimensional para BI, construção de relatórios no Power BI e deploy de aplicações na Microsoft Azure.",
-        techs: ["Python", "SQL", "Power BI", "Azure App Services", "Azure SQL Database"],
-    },
-    {
-        role: "Estagiário",
-        company: "Caixa Econômica Federal",
-        period: "Mai 2017 — Dez 2018",
-        description:
-            "Atuação em atendimento ao cliente, organização de documentos, digitalização de contratos e suporte às rotinas administrativas da agência.",
-        techs: ["Atendimento", "Rotinas Administrativas"],
+            "Implementação de pipeline ETL para dados não estruturados (PDFs/Planilhas), modelagem de banco relacional, dashboards Power BI com modelagem dimensional e automação para emissão de certificados.",
+        techs: ["Python", "SQL", "Power BI", "ETL", "Modelagem Dimensional"],
     },
 ];
 
@@ -173,6 +172,23 @@ export const projects = [
             "Pipeline completo de ingestão e transformação de dados públicos de CNPJs. Armazenamento em HDFS com processamento distribuído via Apache Spark, orquestrado por Airflow dentro de containers Docker.",
         techs: ["Python", "Spark", "HDFS", "Airflow", "Docker"],
         github: "https://github.com/rickluizms/cnpj-datalake",
+        live: "/cnpj-datalake",
+    },
+    {
+        title: "Real-Time Crypto Market Data Pipeline",
+        description:
+            "Infraestrutura robusta de streaming de dados construída em Python e Kafka para monitoramento do mercado de criptomoedas. Ingestão via WebSocket, agregação em janelas OHLCV e cálculo de indicadores técnicos em tempo real com TA-Lib. Observabilidade completa com Prometheus e Grafana.",
+        techs: [
+            "Python",
+            "Kafka",
+            "PostgreSQL",
+            "Redis",
+            "FastAPI",
+            "Prometheus",
+            "Grafana",
+            "Docker"
+        ],
+        github: "https://github.com/rickluizms/event-driven-crypto-pipeline",
     },
     {
         title: "WakaTime Dev Insights",
@@ -191,22 +207,7 @@ export const projects = [
         github: "https://github.com/rickluizms/wakatime-dev-insights",
     },
     {
-        title: "Fluxo WhatsApp — Transcrição e Buffer Inteligente",
-        description:
-            "Fluxo de integração com WhatsApp via Evolution API construído no n8n, com transcrição automática de áudios (speech-to-text), buffer inteligente de mensagens para consolidação de contexto e envio estruturado ao backend. Inclui controle de sessão, debounce de mensagens e registro persistente das interações.",
-        techs: [
-            "n8n",
-            "WhatsApp",
-            "Evolution API",
-            "Speech-to-Text",
-            "Webhooks",
-            "PostgreSQL",
-            "Docker"
-        ],
-        github: "https://github.com/rickluizms/open-n8n/tree/main/fluxo-n8n-whatsapp",
-    },
-    {
-        title: "Agente de IA com Guardrails e Evaluations",
+        title: "Agente de IA com Guardrails e Evaluations (N8N)",
         description:
             "Fluxo de agente de IA com validações estruturadas (guardrails), análise de risco de resposta, controle de alucinação e sistema de evaluations automatizadas. Implementa checagens pré e pós-resposta, classificação de intenção, validação semântica e fallback para operador humano quando necessário.",
         techs: [
@@ -221,38 +222,6 @@ export const projects = [
         github: "https://github.com/rickluizms/open-n8n/tree/main/fluxo-n8n-ia-avancado",
         n8n_preview: true,
         n8n_preview_path: "/workflows/fluxo-n8n-ia-avancado.json"
-    },
-    {
-        title: "Arquitetura Multiagente para Atendimento Inteligente",
-        description:
-            "Implementação de arquitetura multiagente com separação de responsabilidades (Agente Classificador, Agente Executor, Agente Validador e Agente Supervisor). Orquestração via n8n com memória compartilhada e controle de estado, permitindo decisões dinâmicas e fluxos complexos de atendimento.",
-        techs: [
-            "n8n",
-            "Python",
-            "LLMs",
-            "LangChain",
-            "State Management",
-            "PostgreSQL",
-            "Docker"
-        ],
-        github: "https://github.com/rickluizms/open-n8n/tree/main/fluxo-n8n-ia-multiagente",
-    },
-    {
-        title: "UserNine Nexus CRM",
-        description:
-            "Plataforma orientada a domínio e orquestração de pipelines de engajamento automatizado. Destaque para a integração profunda com n8n, permitindo a construção de agentes estruturados e prompts modulares, além da implementação de output parsers para extração de entidades via LLMs. Arquitetura escalável suportada por filas RabbitMQ e Redis, sincronizando fluxos de IA com extrações de dados via web scraping em Python.",
-        techs: [
-            "Java",
-            "Spring Boot",
-            "React",
-            "Shadcn/UI",
-            "Python",
-            "PostgreSQL",
-            "Redis",
-            "RabbitMQ",
-            "n8n",
-            "Docker"
-        ],
     },
     {
         title: "Portfólio Pessoal",

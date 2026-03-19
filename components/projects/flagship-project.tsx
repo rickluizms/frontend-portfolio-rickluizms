@@ -9,9 +9,9 @@ import { motion, useScroll, useTransform } from "framer-motion";
 
 const TECH_STACK = [
     { name: "Python", icon: "/python.svg" },
-    { name: "Docker", icon: "/docker.svg" },
-    { name: "Airflow", icon: "/airflow.svg" },
+    { name: "Kafka", icon: "/kafka.svg" },
     { name: "PostgreSQL", icon: "/postgresql.svg" },
+    { name: "Docker", icon: "/docker.svg" },
 ];
 
 export function FlagshipProject() {
@@ -80,16 +80,15 @@ export function FlagshipProject() {
 
                 {/* Title */}
                 <h3 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-                    CNPJ DataLake
+                    Crypto Market Data Pipeline
                 </h3>
 
                 {/* Description */}
                 <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-                    Pipeline completo de ingestão e transformação de dados públicos
-                    de CNPJs da Receita Federal. Arquitetura em camadas{" "}
-                    <span className="text-foreground font-medium">Bronze → Silver → Gold</span>
-                    {" "}com orquestração via Apache Airflow, processamento distribuído
-                    e múltiplas saídas para API, BI e Analytics.
+                    Ecossistema completo de processamento de dados em tempo real.
+                    Monitoramento do mercado de criptomoedas através de conexões
+                    <span className="text-foreground font-medium"> WebSocket, Apache Kafka e TA-Lib</span>
+                    , com foco em alta escalabilidade, baixa latência e observabilidade profunda via Prometheus e Grafana.
                 </p>
 
                 {/* Tech stack */}
@@ -118,23 +117,22 @@ export function FlagshipProject() {
 
                 {/* CTAs */}
                 <div className="mt-12 flex items-center gap-4">
-                    <Link
-                        href="/cnpj-datalake"
-                        className="group/cta inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-all duration-300 hover:shadow-[0_0_30px_rgba(var(--primary),0.3)] hover:scale-[1.02]"
-                    >
-                        Ver Arquitetura Completa
-                        <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover/cta:translate-x-1" />
-                    </Link>
-
                     <a
-                        href="https://github.com/rickluizms/cnpj-datalake"
+                        href="https://github.com/rickluizms/event-driven-crypto-pipeline"
                         target="_blank"
                         rel="noopener noreferrer"
+                        className="group/cta inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-all duration-300 hover:shadow-[0_0_30px_rgba(var(--primary),0.3)] hover:scale-[1.02]"
+                    >
+                        Ver Repositório GitHub
+                        <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover/cta:translate-x-1" />
+                    </a>
+
+                    <Link
+                        href="#projetos"
                         className="inline-flex items-center gap-2 rounded-lg border border-border/50 px-6 py-3 text-sm font-medium text-muted-foreground transition-all duration-300 hover:border-foreground/20 hover:text-foreground"
                     >
-                        <Github className="h-4 w-4" />
-                        GitHub
-                    </a>
+                        Outros Projetos
+                    </Link>
                 </div>
             </div>
         </motion.section>

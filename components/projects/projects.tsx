@@ -8,7 +8,7 @@ import { FlagshipProject } from "./flagship-project";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { N8nWorkflowViewer } from "@/components/ui/n8n-viewer";
 
-const FLAGSHIP_TITLE = "Data Lake CNPJ";
+const FLAGSHIP_TITLE = "Real-Time Crypto Market Data Pipeline";
 const otherProjects = projects.filter((p) => p.title !== FLAGSHIP_TITLE);
 
 const ITEMS_PER_PAGE = 6;
